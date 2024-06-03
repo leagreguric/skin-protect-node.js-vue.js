@@ -1,0 +1,10 @@
+@import 'base/colors';
+@import 'base/mixins';
+@import 'base/typography';
+@import 'components/Header/header';
+@import 'components/LoginForm/loginForm';
+
+*{
+    margin: 0;
+    font-family: $font-primary;
+}

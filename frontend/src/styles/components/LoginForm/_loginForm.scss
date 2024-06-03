@@ -1,0 +1,71 @@
+
+
+.auth-container {
+    @include flexCenterColumn;
+    width: 100%;
+    height: 90vh;
+}
+
+.background{
+    position: fixed;
+    width: 100%;
+    height: 110%;
+    z-index: -1;
+}
+
+.auth-form {
+    @include flexCenterColumn;
+    gap: 3vw;
+    border-radius: 15px;
+    color: $txt;
+    padding: 8vh;
+    font-size: 5vh;
+    background-color:#d1a9b1;    
+    opacity: 0.5;   
+    box-shadow: 0 0 20px rgba(231, 122, 122, 50);
+}
+
+.auth-input {
+    all: unset;
+    position: relative;
+    background-color:$white;
+    max-width: 100%;
+    padding: 1vh;
+    border-radius: 10px;
+
+}
+
+.auth-input::placeholder{
+    color: $foreground-primary;
+    font-size:large;    
+}
+
+
+.auth-submit {
+    all: unset;
+    background-color: $foreground-primary;
+    border-radius: 20px;
+    color: $white;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 0 16px $foreground-primary;
+}
+
+.auth-submit:hover {
+    background-color: $white;   
+    color: $foreground-primary;
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px $foreground-primary;
+}
+
+.title{
+    padding-top: 15vh;
+    color:$txt;
+    font-size: 5vh;
+    
+}

@@ -2,7 +2,8 @@ import express from 'express';
 import serveStatic from 'serve-static';
 import dotenv from 'dotenv';
 import authRoutes from './src/routes/authRoutes.js';
-import db from './db/db.js'; // Import the database connection
+import productRoutes from './src/routes/productRoutes.js'
+import db from '../backend/db/db.js'
 
 const app = express();
 dotenv.config({ path: './.env' });
@@ -17,6 +18,7 @@ router.use((req, res, next) => {
 
 
 app.use('/auth', authRoutes);
+app.use('/products',productRoutes );
 app.use(serveStatic("../frontend/dist"));
 
 const port = process.env.PORT || 3000;

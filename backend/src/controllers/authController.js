@@ -20,7 +20,7 @@ const createUser = async (req, res, db) => { // Add db parameter
       username,
       email,
       password: hashedPassword,
-      role: 0 // Assuming the default role is 0
+      role: "user" // Assuming the default role is 0
     });
 
     res.status(201).json({ message: 'User created successfully' });
@@ -49,7 +49,8 @@ const loginUser = async (req, res, db) => { // Add db parameter
     }
 
     // Generate a JWT token
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '5s' });
+    
 
     res.status(200).json({ token });
   } catch (error) {
