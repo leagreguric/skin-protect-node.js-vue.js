@@ -3,32 +3,28 @@
 .auth-container {
     @include flexCenterColumn;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
+    background: rgb(183,137,137);
+    background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%); 
 }
 
-.background{
-    position: fixed;
-    width: 100%;
-    height: 110%;
-    z-index: -1;
-}
 
 .auth-form {
     @include flexCenterColumn;
     gap: 3vw;
     border-radius: 15px;
-    color: $txt;
+    color: $brown-txt;
     padding: 8vh;
     font-size: 5vh;
-    background-color:#d1a9b1;    
+    background-color:$white;
     opacity: 0.5;   
-    box-shadow: 0 0 20px rgba(231, 122, 122, 50);
+    box-shadow:$brown-txt 96px 36px 20px, $light-txt -49px -30px 10px;
 }
 
 .auth-input {
     all: unset;
     position: relative;
-    background-color:$white;
+    background-color:white;
     max-width: 100%;
     padding: 1vh;
     border-radius: 10px;
@@ -36,36 +32,28 @@
 }
 
 .auth-input::placeholder{
-    color: $foreground-primary;
+    color: $brown-txt;
     font-size:large;    
 }
 
 
-.auth-submit {
-    all: unset;
-    background-color: $foreground-primary;
-    border-radius: 20px;
-    color: $white;
-    font-size: 18px;
-    border-radius: 10px;
-    width: 100px;
-    height: 50px;
-    position: relative;
-    font-weight: 700;
-    text-align: center;
-    box-shadow: 0 0 16px $foreground-primary;
-}
 
-.auth-submit:hover {
-    background-color: $white;   
-    color: $foreground-primary;
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px $foreground-primary;
-}
 
 .title{
-    padding-top: 15vh;
-    color:$txt;
+    color:$foreground-dark;
     font-size: 5vh;
-    
 }
+
+#auth-btn{
+    padding: 13px 30px;
+    font-size: 13;
+    border: 0ch;
+    }
+#auth-btn:hover{
+    transition : 890ms;
+    padding: 10px 50px;
+    transform : translateY(-0px);
+    
+    color: $white;
+    border: solid 1px $light-txt;
+    }

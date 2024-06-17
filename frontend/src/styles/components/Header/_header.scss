@@ -1,14 +1,18 @@
 .header-container {
     @include flexCenterRow;
-    position: fixed;
     gap: 30px;
     padding: 10px;
-    z-index: 1;
-    
+    z-index: 100;
+    background-color: $light-txt;
     width: 100%;
-    box-shadow: 4px 4px 10px #e77a7a; // Blurovani rub
-
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    overflow: hidden;
+    position: relative; /* Potrebno za preklapanje */
+    margin-bottom: -35px; /* Pomeranje sadržaja ispod prema gore, prilagodite po potrebi */
+    height: 50px;
 }
+
 
 .header-action-btn{
     color:$foreground-primary;
@@ -19,7 +23,7 @@
 .header-action-btn:hover{
     color:$white;
     background-color: $foreground-primary;
-    box-shadow: 4px 4px 10px #e77a7a;
+    transition-duration: 0.3s;
     border-radius: 5px;
 
 }

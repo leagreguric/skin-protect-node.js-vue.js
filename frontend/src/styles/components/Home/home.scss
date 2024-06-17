@@ -1,0 +1,111 @@
+#scroll-animate {
+    overflow: hidden;
+  }
+  
+  #scroll-animate-main {
+    width: 100%;
+    position: relative;
+  }
+  
+  header {
+    @include flexColumn;
+    
+
+  }
+  
+  footer {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    bottom: -300px;
+    left: 0;
+    transition: bottom 0.4s ease;
+    background: $background-primary;
+  }
+  
+  .content {
+
+    @include flexColumn;
+    min-height: 1000px;
+    background: #ededed;
+    padding-top: 100vh;
+    gap: 20px;
+  }
+
+
+  #homepage-title{
+    animation: 0.4s right-to-left forwards;
+    color: $foreground-dark;
+    padding-left: 15px;
+    padding-top: 35px;
+    font-size: 8vh;
+  }
+  @keyframes right-to-left {
+    from {
+    transform: translateX(-100vw);
+    }
+    to {
+    transform: translateX(0);
+    }
+    }
+
+  .description {
+    align-self: center;
+    font-size: 4vh;
+    font-weight: 300;
+    backdrop-filter: blur(20px) saturate(116%);
+    -webkit-backdrop-filter: blur(20px) saturate(116%);
+    background-color: rgba(249,241,241, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.18); 
+    padding: 20px;
+    opacity: 0.9;
+    width: 40%;
+    color: $foreground-dark;
+    transition: box-shadow 0.3s ease; 
+}
+
+.description:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+
+.sign{
+  flex-direction: row;
+  align-self: center;
+  padding: 30px;
+  justify-content: space-between;
+  
+}
+
+#content-description{
+
+  width: 60%;
+  
+}
+
+
+.content-action-btn{
+text-decoration: none;
+font-size: 24px;
+font-weight: 800;
+color: $brown-txt;
+background-color: $background-primary;
+padding: 23px 40px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+border-radius: 50px 20px;
+transition : 890ms;
+transform: translateY(0);
+align-items: center;
+cursor: pointer;
+margin: 20px;
+}
+.content-action-btn:hover{
+  transition : 890ms;
+padding: 20px 60px;
+transform : translateY(-0px);
+
+color: $white;
+border: solid 1px $light-txt;
+}
+  
+

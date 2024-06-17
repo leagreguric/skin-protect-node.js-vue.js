@@ -32,10 +32,10 @@ const createUser = async (req, res, db) => { // Add db parameter
 
 const loginUser = async (req, res, db) => { // Add db parameter
   try {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
     // Retrieve user data from the database based on email
-    const user = await db('user').where({ email }).first();
+    const user = await db('user').where({ username }).first();
 
     // Check if user exists
     if (!user) {
@@ -45,7 +45,7 @@ const loginUser = async (req, res, db) => { // Add db parameter
     // Compare the provided password with the hashed password stored in the database
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+      return res.status(401).json({ message: 'Invalid username or password' });
     }
 
     // Generate a JWT token
@@ -60,10 +60,10 @@ const loginUser = async (req, res, db) => { // Add db parameter
 };
 
 const getUserByEmail = async (req, res, db) => {
-  const { email } = req.params;
+  const { username } = req.params;
 
   try {
-    const user = await db('user').where({ email }).first();
+    const user = await db('user').where({ username }).first();
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }

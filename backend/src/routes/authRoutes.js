@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
   await loginUser(req, res, req.db); // Pass db connection to loginUser
 });
 
-router.get('/user/:email', async (req, res) => {
+router.get('/user/:username', async (req, res) => {
   await getUserByEmail(req, res, req.db);
 });
 

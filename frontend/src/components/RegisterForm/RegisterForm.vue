@@ -1,7 +1,6 @@
 <template>
     <div class="auth-container">
-        <div class="title">Registration</div>
-        <img class="background" src="../../assets/pozadina.jpg">
+
         <form @submit.prevent="register" autocomplete="off" class="auth-form">
             <div>
                 <input
@@ -34,7 +33,7 @@
                 />
 				
             </div>
-            <button type="submit" class="auth-submit">SIGN UP</button>
+            <button type="submit" class="content-action-btn" id="auth-btn">SIGN UP</button>
         </form>
     </div>
 </template>

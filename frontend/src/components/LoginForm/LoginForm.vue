@@ -3,14 +3,14 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { setUser } from "../../store/auth.js"; // Adjust the path as needed
-const email = ref("");
+const username = ref("");
 const password = ref("");
 const router = useRouter();
 
 const login = async () => {
     try {
         const response = await axios.post("http://localhost:3000/auth/login", {
-            email: email.value,
+            username: username.value,
             password: password.value,
         });
 
@@ -24,7 +24,7 @@ const login = async () => {
 
         // Fetch user information after successful login
         const userInfoResponse = await axios.get(
-            `http://localhost:3000/auth/user/${email.value}`,
+            `http://localhost:3000/auth/user/${username.value}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -50,8 +50,6 @@ const login = async () => {
 
 <template>
     <div class="auth-container">
-        <div class="title">Login    </div>
-        <img class="background" src="../../assets/pozadina.jpg">
         <form @submit.prevent="login" class="auth-form">
             <div>
 				
@@ -75,7 +73,7 @@ const login = async () => {
                 />
 
             </div>
-            <button type="submit" class="auth-submit">LOGIN</button>
+            <button type="submit" class="content-action-btn" id="auth-btn">LOGIN</button>
         </form>
     </div>
 </template>

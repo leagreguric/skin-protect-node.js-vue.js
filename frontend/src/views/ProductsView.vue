@@ -1,5 +1,5 @@
 <script setup>
-import Products  from '../components/Products.vue';
+import Products  from '../components/Products/Products.vue';
 import Header from '../components/Header/Header.vue';
 
 </script>
