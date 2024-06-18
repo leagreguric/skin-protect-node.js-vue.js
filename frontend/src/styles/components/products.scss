@@ -34,45 +34,27 @@
       }
   
     }
+
+    .select{
+      padding-top: 5vh;
+      @include flexCenterColumn;
+    }
+
+    select{
+      background-color: $foreground-dark;
+      color: $background-primary;
+      border-radius: 10px;
+      width: 30%;
+      font-size: 20px;
+      border: 0px solid #C4D1EB;
+    }
+
+    .title{
+      align-self: center;
+    }
+    
+    
   }
 
-  .custom-select {
-    position: relative;
-  }
-  
-  .custom-select select {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 7px 18px 7px 18px;
-    background-color: #E2CFCF;
-    border: 0px solid #C4D1EB;
-    border-radius: 20px;
-    color: #6F5E5E;
-    cursor: pointer;
-    outline: none;
-    box-shadow: 17px 13px 14px 5px #6F5E5E;
-  }
-  
-  .custom-select select:focus {
-    background: #CBBABA;
-    border: 0px solid #E2CFCF;
-    border-radius: 20px;
-  }
-  
-  .custom-select::after {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-    top: 50%;
-    right: 24px;
-    transform: translate(0, -50%);
-    width: 22px;
-    height: 22px;
-    background-color: #6F5E5E;
-    clip-path: polygon(50% 80%, 0 20%, 100% 20%);
-  }
-  
-  
+
+

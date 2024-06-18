@@ -1,12 +1,16 @@
 <template>
   <div class="products">
-    <label for="skinType">Skin Type:</label>
-    <select v-model="skinType" @change="fetchFilteredProducts" class="custom-select">
+    <div class="select">
+
+    <label for="skinType" class="title">Skin Type:</label>
+    <select v-model="skinType" @change="fetchFilteredProducts" >
       <option value="dry">Dry</option>
       <option value="oily">Oily</option>
       <option value="combination">Combination</option>
       <option value="sensitive">Sensitive</option>
     </select>
+    <div class="select_arrow"></div>
+  </div>
     <div class="products-container">
       <router-link v-for="product in products" :key="product.ID" :to="'/products/' + product.ID" class="product-box">
      
