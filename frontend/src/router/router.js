@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ProductsView from '../views/ProductsView.vue';
 import ProductDetails from '../views/ProductDetailsView.vue';
+import AnalyzeIngredients from '../components/AnalyzeIngredients.vue';
 const routes = [
     { 
       path: '/', 
@@ -37,7 +38,14 @@ const routes = [
       path: '/products/:id',
       name: 'ProductDetails',
       component: ProductDetails
-    }
+    },
+    {
+      path: '/analyze-ingredients',
+      component: AnalyzeIngredients,
+      meta: {
+          title: "Analyze Ingredients",
+      }
+  }
     ]
   
   const router = createRouter({

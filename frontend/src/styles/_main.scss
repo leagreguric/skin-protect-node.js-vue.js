@@ -3,8 +3,10 @@
 @import 'base/typography';
 @import 'components/Header/header';
 @import 'components/LoginForm/loginForm';
-@import 'components/products.scss';
+@import 'components/Products/products.scss';
 @import 'components/Home/home.scss';
+@import 'components/Products/productsDetail.scss';
+
 
 *{
     margin: 0;

@@ -1,0 +1,102 @@
+
+
+.product-details-container{
+
+    background: rgb(183,137,137);
+    background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%);
+
+.product-details{
+    padding-top: 5%;
+    @include flexRow;
+    height: 100%;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+#product-details-title{
+    padding-top: 15vh;
+    padding-left: 5vh;
+}
+
+.ingredients{
+    padding: 15px;
+    width: 40%;
+    font-size: 20px;
+    background-color: $background-primary;
+    color:$brown-txt;
+    border-radius: 15px;
+    text-wrap: wrap;
+}
+   
+
+.comments-container{
+    width: 100%;
+    padding: 20px;
+    @include flexColumn;
+    padding-left: 15px;
+    gap:30px;
+    flex-wrap: wrap;
+    
+
+    
+}
+
+
+
+.comment {
+    margin-bottom: 10px;
+    background-color: $white;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 90vh; 
+    min-height: 50px; 
+    color: $txt;
+    text-wrap: wrap;
+  }
+  
+  .comment p {
+    margin: 2; /* Uklanja vanjski prostor oko paragrafa */
+    white-space: pre-wrap; /* Održava prikazivanje razmaka i prelaza u novi red */
+    word-break: break-word; /* Omogućava prelazak riječi na novi red ako je potrebno */
+  }
+  
+
+.info{
+    @include flexCenterRow;
+    gap:30px;
+
+}
+
+.image{
+    width: 35%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.add-comment {
+    margin-top: 20px;
+  }
+
+.add-comment textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+  }
+
+  .add-comment button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  
+
+
+}
