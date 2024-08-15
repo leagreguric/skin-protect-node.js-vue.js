@@ -1,13 +1,15 @@
 .products {
-
+  min-height: 100vh;
   background: rgb(183,137,137);
   background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%); 
+  background-size: cover;
 
 
     .products-container {
         padding-top: 5%;
         @include flexCenterRow;
-        height: 100vh;
+        height: 100%;
+        width: 100%;
         gap: 30px;
         flex-wrap: wrap;
     }
@@ -15,14 +17,18 @@
     .product-box {
         @include flexCenterColumn;
         border-radius: 15px;
-      width: calc(33.33% - 20px); // Postavljanje širine na 1/3 containera s razmakom od 20px
+      width: calc(33.33% - 20px); 
+      height: 400px;
       margin-bottom: 20px;
-      background-color: $white; // Boja pozadine proizvoda
-      padding: 20px; // Unutarnji razmak proizvoda
+      background-color: $white; 
+      padding: 20px;
+      overflow: hidden;
+    }
   
       .product-image {
         border-radius: 5px;
-        max-width: 50%;
+        width: 50%;
+        height: auto;
         height: auto;
         margin-bottom: 10px;
       }
@@ -33,7 +39,7 @@
         color: $foreground-primary;
       }
   
-    }
+    
 
     .select{
       padding-top: 5vh;

@@ -1,10 +1,10 @@
 
 
 .product-details-container{
-
+    min-height: 100vh;
     background: rgb(183,137,137);
     background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%);
-
+    background-size: cover; 
 .product-details{
     padding-top: 5%;
     @include flexRow;
@@ -20,9 +20,10 @@
 
 .ingredients{
     padding: 15px;
-    width: 40%;
+    padding-right: 30px;
+    margin-right: 5px;
+    margin-left: 5px;
     font-size: 20px;
-    background-color: $background-primary;
     color:$brown-txt;
     border-radius: 15px;
     text-wrap: wrap;
@@ -30,7 +31,7 @@
    
 
 .comments-container{
-    width: 100%;
+    width: 50%;
     padding: 20px;
     @include flexColumn;
     padding-left: 15px;
@@ -49,22 +50,23 @@
     padding: 10px;
     border-radius: 5px;
     overflow: hidden;
-    min-width: 90vh; 
+    min-width: 50%; 
     min-height: 50px; 
     color: $txt;
     text-wrap: wrap;
   }
   
   .comment p {
-    margin: 2; /* Uklanja vanjski prostor oko paragrafa */
-    white-space: pre-wrap; /* Održava prikazivanje razmaka i prelaza u novi red */
-    word-break: break-word; /* Omogućava prelazak riječi na novi red ako je potrebno */
+    margin: 2; 
+    white-space: pre-wrap;
+    word-break: break-word; 
   }
   
 
 .info{
     @include flexCenterRow;
     gap:30px;
+    flex-wrap: wrap;
 
 }
 
@@ -76,6 +78,8 @@
 
 .add-comment {
     margin-top: 20px;
+    @include flexColumn;
+    flex-wrap: wrap;
   }
 
 .add-comment textarea {
@@ -87,13 +91,27 @@
   }
 
   .add-comment button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: $brown-txt;
+    color: $white;
+    width: 300px;
+    font-size: 17px;
+    padding: 23px 50px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+border-radius: 50px 20px;
+transition : 890ms;
+transform: translateY(0);
+align-items: center;
+cursor: pointer;
+margin:15px;
+  }
+
+  .add-comment button:hover{
+    transition : 890ms;
+    padding: 15px 80px;
+    transform : translateY(-0px);
+    color: $brown-txt;
+        background-color: $background-primary;
+    border: solid 1px $brown-txt;
   }
 
   

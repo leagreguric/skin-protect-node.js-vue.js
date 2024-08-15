@@ -6,6 +6,7 @@
 @import 'components/Products/products.scss';
 @import 'components/Home/home.scss';
 @import 'components/Products/productsDetail.scss';
+@import 'components/adminDashboard';
 
 
 *{
@@ -44,4 +45,9 @@
   
   *::-webkit-scrollbar-thumb:active {
     background-color: $brown-txt
+  }
+
+  ::selection{
+    color:$foreground-dark;
+    background-color: $baby-pink;
   }

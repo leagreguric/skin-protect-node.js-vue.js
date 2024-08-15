@@ -1,0 +1,20 @@
+app.post('/analyze-ingredients', async (req, res) => {
+  const { ingredients } = req.body;
+  try {
+    const responses = await Promise.all(ingredients.map(async ingredient => {
+      const response = await axios.get(`https://api.inci-beauty.com/ingredient/${ingredient}`, {
+        headers: {
+          'Authorization': `Bearer ${process.env.INCI_API_KEY}`
+        }
+      });
+      return response.data;
+    }));
+
+    const comedogenicIngredients = responses.filter(item => item.comedogenic_rating >= 3);
+
+    res.status(200).json(comedogenicIngredients);
+  } catch (error) {
+    console.error('Error analyzing ingredients:', error.message);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});

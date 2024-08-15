@@ -1,0 +1,64 @@
+.admin-container{
+    min-height: 100vh;
+    background: rgb(183,137,137);
+    background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%); 
+    background-size: cover;
+
+
+#admin-title{
+    margin-top: 5%;
+}
+.dashboard {
+    @include flexColumn;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .content-container {
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .section {
+    margin-bottom: 2em;
+  }
+  
+  .list {
+    
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-item {
+    @include flexSpaceBetween;
+    color:$brown-txt;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: darkred;
+  }
+  
+  .no-access {
+    text-align: center;
+    color:$foreground-dark;
+    margin-top: 3em;
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+
+
+
+}

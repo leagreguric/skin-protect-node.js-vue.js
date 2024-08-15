@@ -1,67 +1,51 @@
 <template>
-    <div>
-      <h1>Analyze Ingredients</h1>
-      <label for="ingredients">Enter Ingredients (comma separated):</label>
-      <input v-model="ingredientsInput" id="ingredients" placeholder="e.g., Water, Glycerin, Mineral Oil" />
-      <button @click="analyzeIngredients">Analyze</button>
-      <div v-if="error">
-        <p>Error: {{ error }}</p>
-      </div>
-      <div v-if="comedogenicIngredients.length">
-        <h2>Comedogenic Ingredients:</h2>
-        <ul>
-          <li v-for="ingredient in comedogenicIngredients" :key="ingredient.id">
-            {{ ingredient.name }} - Comedogenic Rating: {{ ingredient.comedogenic_rating }}
-          </li>
-        </ul>
-      </div>
+  <div>
+    <h2>Skin Analysis</h2>
+    <input type="file" @change="handleFileUpload" accept="image/*">
+    <button @click="analyzeSkin">Analyze Skin</button>
+
+    <div v-if="skinAnalysisResult">
+      <h3>Analysis Result</h3>
+      <p>{{ skinAnalysisResult }}</p>
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
-    data() {
-      return {
-        ingredientsInput: '',
-        comedogenicIngredients: [],
-        error: null
-      };
+  </div>
+</template>
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      skinImage: null,
+      skinAnalysisResult: null
+    };
+  },
+  methods: {
+    handleFileUpload(event) {
+      this.skinImage = event.target.files[0];
     },
-    methods: {
-      async analyzeIngredients() {
-        this.error = null;
-        try {
-          const ingredients = this.ingredientsInput.split(',').map(ing => ing.trim());
-          const response = await axios.post('http://localhost:3000/analyze-ingredients', { ingredients });
-          this.comedogenicIngredients = response.data;
-        } catch (error) {
-          this.error = error.response ? error.response.data.message : error.message;
-          console.error('Error analyzing ingredients:', error);
+    async analyzeSkin() {
+      try {
+        if (!this.skinImage) {
+          alert('Please select an image first.');
+          return;
         }
+
+        let formData = new FormData();
+        formData.append('image', this.skinImage);
+
+        const response = await axios.post('http://localhost:3000/api/analyze-skin', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        this.skinAnalysisResult = response.data;
+      } catch (error) {
+        console.error('Error analyzing skin:', error);
+        alert('An error occurred while analyzing skin.');
       }
     }
-  };
-  </script>
-  
-  <style scoped>
-  #ingredients {
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 1em;
   }
-  
-  button {
-    padding: 0.5em 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  </style>
-  
+};
+</script>

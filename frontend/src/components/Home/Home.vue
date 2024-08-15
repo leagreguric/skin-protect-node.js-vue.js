@@ -9,27 +9,23 @@
             your ultimate destination for personalized skincare recommendations tailored to your unique skin type. Whether you're on a quest for the perfect moisturizer, searching for the ideal cleanser, or seeking targeted treatments, our intuitive web application is here to simplify your skincare journey.
           </div>
         </header>
-
         <section class="content" ref="content">
           <h1 class="description" id="content-description">
             With SkinProtect, you'll experience: <br>
             Say goodbye to guesswork! Our advanced algorithm analyzes your skin type and concerns to curate a customized list of skincare products just for you.
             Discover the joy of skincare made simple with SkinCareMatch. Sign up today and unlock the secret to radiant, healthy-looking skin!
           </h1>
-          <div class="sign">
-            <template v-if="user">
-              <article class="title">Hello, {{ user.username }}!</article>
-              <RouterLink to="/products" class="content-action-btn">Products</RouterLink>
-            </template>
-            <template v-else>
-              <RouterLink to="/login" class="content-action-btn">LOGIN</RouterLink>
-              <RouterLink to="/register" class="content-action-btn">REGISTER</RouterLink>
-            </template>
-          </div>
-        </section>
 
+        </section>
         <footer ref="footer" :style="{ bottom: footerBottom }">
-          <AnalyzeIngredients />
+          <div v-if="products">
+            <h2 class="title">Popular Hypoallergenic Products:</h2>
+            <ul>
+              <li v-for="product in products" :key="product.id" class="list">
+                {{ product.name }} - {{ product.brand }} 
+              </li>
+            </ul>
+          </div>
         </footer>
       </div>
     </div>
@@ -38,24 +34,23 @@
 
 <script>
 import { useUser } from '../../store/auth.js';
-import AnalyzeIngredients from '../AnalyzeIngredients.vue';
+import axios from 'axios';
 
 const { user } = useUser();
 
 export default {
-  components: {
-    AnalyzeIngredients
-  },
   data() {
     return {
       headerBgPosition: '50%',
       footerBottom: '-300px',
-      overlapHeight: '0px'
+      overlapHeight: '0px',
+      products: null
     };
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-    this.handleScroll(); // Pozivamo funkciju prilikom montiranja kako bi se postavile inicijalne vrijednosti
+    this.handleScroll();
+    this.fetchProducts();
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -69,18 +64,24 @@ export default {
 
       this.headerBgPosition = `${50 - (scroll * 100 / windowHeight)}%`;
 
-      // Ako je kraj contenta dostignut, postavljamo preklapanje na visinu prozora
       if (scroll >= contentHeight - windowHeight) {
         this.overlapHeight = `${windowHeight - (contentHeight - scroll)}px`;
       } else {
         this.overlapHeight = '0px';
       }
 
-      // Ako je skrol manji od visine footera, postavljamo footer na dno prozora
       if (scroll >= footerHeight) {
         this.footerBottom = '0px';
       } else {
         this.footerBottom = `-${footerHeight}px`;
+      }
+    },
+    async fetchProducts() {
+      try {
+        const response = await axios.get('https://makeup-api.herokuapp.com/api/v1/products.json?product_tags=Hypoallergenic');
+        this.products = response.data;
+      } catch (error) {
+        console.error('Error fetching products:', error);
       }
     }
   }

@@ -108,4 +108,36 @@ color: $white;
 border: solid 1px $light-txt;
 }
   
+.list{
+  font-size: large;
+  color: $brown-txt;
+  margin: 25px;
+}
 
+
+
+
+
+@media (max-width: 480px) {
+  #homepage-title{
+    font-size: 4vh;
+  }
+  .description {
+    margin-top: -50px;
+    font-size: 12px;
+    max-height: 50%;
+
+}
+}
+
+@media (min-width: 481px) and (max-width: 1023px) {
+  #homepage-title{
+    font-size: 6vh;
+  }
+  .description {
+    margin-top: -50px;
+    font-size: 18px;
+    max-height: 50%;
+
+}
+}

@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import { setUser } from "../../store/auth.js"; // Adjust the path as needed
+import { setUser } from "../../store/auth.js"; 
 const username = ref("");
 const password = ref("");
 const router = useRouter();
@@ -13,16 +13,11 @@ const login = async () => {
             username: username.value,
             password: password.value,
         });
-
-        // Check if response status is ok
         if (response.status !== 200) {
             throw new Error("Login failed: Invalid response");
         }
-
         const token = response.data.token;
         localStorage.setItem("token", token);
-
-        // Fetch user information after successful login
         const userInfoResponse = await axios.get(
             `http://localhost:3000/auth/user/${username.value}`,
             {
@@ -31,12 +26,9 @@ const login = async () => {
                 },
             }
         );
-
-        // Check if user info response status is ok
         if (userInfoResponse.status !== 200) {
             throw new Error("Login failed: Invalid user info response");
         }
-
         const userInfo = userInfoResponse.data;
         setUser(userInfo);
 
@@ -51,8 +43,6 @@ const login = async () => {
 <template>
     <div class="auth-container">
         <form @submit.prevent="login" class="auth-form">
-            <div>
-				
                 <input
                     type="username"
                     id="username"
@@ -61,8 +51,6 @@ const login = async () => {
                     placeholder="Username"
                     required
                 />
-            </div>
-            <div>
                 <input
                     type="password"
                     id="password"
@@ -72,7 +60,6 @@ const login = async () => {
                     required
                 />
 
-            </div>
             <button type="submit" class="content-action-btn" id="auth-btn">LOGIN</button>
         </form>
     </div>

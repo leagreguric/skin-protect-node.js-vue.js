@@ -4,6 +4,8 @@
     @include flexCenterColumn;
     width: 100%;
     height: 95vh;
+    overflow: hidden;
+    background-size: cover;
     background: rgb(183,137,137);
     background: radial-gradient(circle, rgba(183,137,137,1), rgba(197,160,160,1) 35%, rgba(226,207,207,1) 100%); 
 }
@@ -14,7 +16,7 @@
     gap: 3vw;
     border-radius: 15px;
     color: $brown-txt;
-    padding: 8vh;
+    padding: 30px;
     font-size: 5vh;
     background-color:$white;
     opacity: 0.5;   
@@ -28,7 +30,6 @@
     max-width: 100%;
     padding: 1vh;
     border-radius: 10px;
-
 }
 
 .auth-input::placeholder{
@@ -57,3 +58,13 @@
     color: $white;
     border: solid 1px $light-txt;
     }
+
+
+@media (min-width: 320px) and (max-width: 1023px) {
+        
+    .auth-form {
+        @include flexCenterColumn;
+        max-width: 70%;
+    }
+}
+      

@@ -1,7 +1,6 @@
 <template>
   <div class="products">
     <div class="select">
-
     <label for="skinType" class="title">Skin Type:</label>
     <select v-model="skinType" @change="fetchFilteredProducts" >
       <option value="dry">Dry</option>
@@ -12,11 +11,11 @@
     <div class="select_arrow"></div>
   </div>
     <div class="products-container">
-      <router-link v-for="product in products" :key="product.ID" :to="'/products/' + product.ID" class="product-box">
-     
+      <h1 v-if="products.length===0" class="title">There are currently no products in this category. Sorry 😭</h1>
+
+      <router-link v-else v-for="product in products" :key="product.ID" :to="'/products/' + product.ID" class="product-box">
           <img class="product-image" :src="product.image" alt="Product Image">
           <h2 class="product-name">{{ product.name }}</h2>
-        
       </router-link>
     </div>
   </div>
@@ -24,7 +23,6 @@
 
 <script>
 import axios from 'axios';
-
 export default {
   data() {
     return {
