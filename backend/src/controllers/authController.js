@@ -28,7 +28,6 @@ const createUser = async (req, res, db) => {
   }
 };
 
-// Ostale funkcije ostaju nepromijenjene
 const loginUser = async (req, res, db) => { 
   try {
     const { username, password } = req.body;
@@ -40,6 +39,13 @@ const loginUser = async (req, res, db) => {
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid username or password' });
     }
+
+    req.session.user = {
+      id: user.id,
+      username: user.username,
+      role: user.role
+    };
+    
     const JWT_token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
     res.status(200).json({ JWT_token });
   } catch (error) {

@@ -26,3 +26,17 @@ export const postComment = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+export const getAllComments = async (req, res) => {
+  try {
+    // Spojite komentare s proizvodima koristeći 'product_id'
+    const commentsWithProducts = await knex('comments')
+      .join('products', 'comments.product_id', '=', 'products.id')
+      .select('comments.id as comment_id', 'comments.comment', 'comments.username', 'products.name as product_name', 'products.id as product_id');
+    
+    res.status(200).json(commentsWithProducts);
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
