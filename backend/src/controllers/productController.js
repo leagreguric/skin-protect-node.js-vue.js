@@ -27,7 +27,7 @@ export const getProductDetails = async (req, res) => {
 
 export const getFilteredItems = async (req, res) => {
   try {
-    const skinType = req.query.skinType; // Tip kože iz zahtjeva
+    const skinType = req.query.skinType; 
     const desirableIngredients = await knex('skin_type_ingredients')
       .where({ skin_type: skinType, is_desirable: 1 })
       .pluck('ingredient');

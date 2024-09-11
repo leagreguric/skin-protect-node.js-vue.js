@@ -4,10 +4,9 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ProductsView from '../views/ProductsView.vue';
 import ProductDetails from '../views/ProductDetailsView.vue';
-import AnalyzeIngredients from '../components/AnalyzeIngredients.vue';
+
 import AdminDashboard from '../views/AdminDashboardView.vue';
 const routes = [
-  
     { 
       path: '/', 
       component: HomeView,
@@ -41,13 +40,6 @@ const routes = [
       name: 'ProductDetails',
       component: ProductDetails
     },
-    {
-      path: '/analyze-ingredients',
-      component: AnalyzeIngredients,
-      meta: {
-          title: "Analyze Ingredients",
-      }
-    },
       {
         path: '/admin',
         component: AdminDashboard,
@@ -57,7 +49,6 @@ const routes = [
           requiresAdmin: true
         }
       }
-
     ]
   const router = createRouter({
     history: createWebHashHistory(),

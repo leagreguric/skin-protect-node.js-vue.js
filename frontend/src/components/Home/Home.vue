@@ -35,9 +35,7 @@
 <script>
 import { useUser } from '../../store/auth.js';
 import axios from 'axios';
-
 const { user } = useUser();
-
 export default {
   data() {
     return {

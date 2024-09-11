@@ -12,10 +12,10 @@ const app = express();
 dotenv.config({ path: './.env' });
 
 app.use(session({
-  secret: 'your-secret-key', // Promijeni ovo u sigurniji ključ u produkciji
+  secret: 'your-secret-key', 
   resave: false,
-  saveUninitialized: false, // Možeš promijeniti na true ako koristiš session store koji zahtijeva ovu opciju
-  cookie: { secure: false } // Postavi na true ako koristiš HTTPS
+  saveUninitialized: false, 
+  cookie: { secure: false } 
 }));
 
 app.use(express.json());
@@ -32,7 +32,6 @@ app.use('/products', productRoutes);
 app.use(serveStatic("../frontend/dist"));
 app.use('/products', commentRoutes); 
 
-
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
@@ -40,4 +39,3 @@ app.listen(port, () => {
 
 
 
-app.use('/admin', isAdmin, adminRoutes);
